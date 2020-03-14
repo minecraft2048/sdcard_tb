@@ -1,0 +1,49 @@
+{
+    "name": "Bolder Flight Systems MPU9250", 
+    "version": "1.0.1", 
+    "keywords": [
+        "sensors"
+    ], 
+    "description": "Library for communicating with the MPU-9250 and MPU-9255 nine-axis Inertial Measurement Units (IMU).", 
+    "frameworks": [
+        "arduino"
+    ], 
+    "platforms": [
+        "atmelavr", 
+        "atmelsam", 
+        "espressif32", 
+        "espressif8266", 
+        "intel_arc32", 
+        "microchippic32", 
+        "nordicnrf51", 
+        "nordicnrf52", 
+        "ststm32", 
+        "teensy", 
+        "timsp430"
+    ], 
+    "authors": [
+        {
+            "email": "brian.taylor@bolderflight.com", 
+            "url": null, 
+            "maintainer": true, 
+            "name": "Brian Taylor"
+        }
+    ], 
+    "repository": {
+        "type": "git", 
+        "url": "https://github.com/bolderflight/MPU9250"
+    }, 
+    "homepage": null, 
+    "export": {
+        "include": null, 
+        "exclude": [
+            "extras", 
+            "docs", 
+            "tests", 
+            "test", 
+            "*.doxyfile", 
+            "*.pdf"
+        ]
+    }, 
+    "id": 5602
+}
