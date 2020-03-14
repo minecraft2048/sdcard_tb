@@ -25,7 +25,7 @@ uint32_t block_ptr;
 uint32_t block_ptr_start;
 uint32_t prevTime;
 uint32_t time2 = 0;
-
+char filename[8] = {0};
 
 typedef union {
   uint32_t i;
@@ -47,7 +47,8 @@ void setup() {
     Serial.println("IMU init fail");
     while(1);
   }
-
+  randomSeed(analogRead(0)); //Initialize RNG with random data from analog pin
+  sprintf(filename, "data%d.bin",random(0,256));
   IMU1.setDlpfBandwidth(MPU9250::DLPF_BANDWIDTH_DISABLE);
   Serial.println("SD init");
 
@@ -55,10 +56,15 @@ void setup() {
     Serial.println("SD init fail");
     while(1);
   }
-    sd.remove("test.bin");
-  Serial.println("Opening file");
+  Serial.print ("Opening file ");
+  Serial.println(filename);
 
-  if (!binFile.createContiguous("test.bin",512*BLOCK_COUNT))
+  if(sd.exists(filename)){
+    Serial.println("File exists2");
+    sprintf(filename, "data%d.bin",random(0,256));
+  }
+
+  if (!binFile.createContiguous(filename,512*BLOCK_COUNT))
   {
     Serial.println("Cannot create contiguous file");
     while(1);
@@ -100,6 +106,7 @@ void serializeFloat(block_t *block, float data){
     block->data[block->counter] = (convert.i & (0xff << 3*8)) >> 3*8;
     block->counter  = block->counter + 1;
 }
+
 
 
 void loop() {
