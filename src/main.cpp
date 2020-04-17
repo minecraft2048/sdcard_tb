@@ -97,14 +97,7 @@ void serializeInt(block_t *block, uint32_t data){
 void serializeFloat(block_t *block, float data){
     u convert;
     convert.f = data;
-    block->data[block->counter] = (convert.i & (0xff << 0*8)) >> 0*8;
-    block->counter = block->counter + 1;
-    block->data[block->counter]  = (convert.i & (0xff << 1*8)) >> 1*8;
-    block->counter  = block->counter + 1;
-    block->data[block->counter] = (convert.i & (0xff << 2*8)) >> 2*8;
-    block->counter  = block->counter + 1;
-    block->data[block->counter] = (convert.i & (0xff << 3*8)) >> 3*8;
-    block->counter  = block->counter + 1;
+    serializeInt(block, convert.i);
 }
 
 
