@@ -27,12 +27,12 @@ uint32_t prevTime;
 uint32_t time2 = 0;
 char filename[8] = {0};
 
+//Union to convert floating point to integer representation
 typedef union {
   uint32_t i;
   float f;
  } u;
 
-u convert; //convert floating point to integer representation
 //Forward declarations
 void flushBuffer();
 
